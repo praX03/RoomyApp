@@ -11,6 +11,25 @@
         android:id="@+id/emailId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Name" />
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroup">
+        <RadioButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Male" />
+        <RadioButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Female" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/emailId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:hint="Enter Email here" />
     <EditText
         android:id="@+id/password"
