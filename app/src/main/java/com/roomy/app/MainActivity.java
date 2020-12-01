@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         al = new ArrayList<>();
         al.add("Aditya");
-        al.add("Anushka");
+        al.add("Anushkaa");
         al.add("Pratham");
         al.add("Lisha");
         al.add("John");
