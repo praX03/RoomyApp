@@ -20,7 +20,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Objects;
+
 public class RegistrationActivity extends AppCompatActivity {
+
     private Button mRegister;
     private EditText mEmail, mPassword, mName;
 
@@ -43,7 +46,6 @@ public class RegistrationActivity extends AppCompatActivity {
                     Intent intent = new Intent(RegistrationActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
-                    return;
                 }
             }
         };
@@ -73,10 +75,10 @@ public class RegistrationActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
-                            Toast.makeText(RegistrationActivity.this, "Try again Roomy!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegistrationActivity.this, "Try again!", Toast.LENGTH_SHORT).show();
                         }
                         else{
-                            String userId = mAuth.getCurrentUser().getUid();
+                            String userId = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
                             DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(radioButton.getText().toString()).child(userId);
                             currentUserDb.setValue(name);
                         }
