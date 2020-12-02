@@ -57,16 +57,15 @@ public class RegistrationActivity extends AppCompatActivity {
         mRadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
 
         mRegister.setOnClickListener(new View.OnClickListener() {
-            int selectId = mRadioGroup.getCheckedRadioButtonId();
-
-            final RadioButton radioButton = (RadioButton) findViewById(selectId);
-
-            if(radioButton.getText() == null){
-                return;
-            }
 
             @Override
             public void onClick(View v) {
+                int selectId = mRadioGroup.getCheckedRadioButtonId();
+
+                final RadioButton radioButton = (RadioButton) findViewById(selectId);
+                if (radioButton.getText() == null){
+                    return;
+                }
                 final String email = mEmail.getText().toString();
                 final String password = mPassword.getText().toString();
                 final String name = mName.getText().toString();
