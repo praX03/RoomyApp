@@ -1,3 +1,4 @@
+
 package com.roomy.app;
 
 import androidx.annotation.NonNull;
@@ -148,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getOppositeSexUsers(){
-        DatabaseReference oppositeSexDb = FirebaseDatabase.getInstance().getReference().child("Users").child("opppositeUserSex");
+        DatabaseReference oppositeSexDb = FirebaseDatabase.getInstance().getReference().child("Users").child(oppositeUserSex);
         oppositeSexDb.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
