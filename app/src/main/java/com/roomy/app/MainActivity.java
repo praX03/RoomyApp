@@ -33,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
     private int i;
 
     private FirebaseAuth mAuth;
+    private String currentUId;
+
+    private DatabaseReference usersDb;
 
     ListView listView;
     List<cards> rowItems;
@@ -42,7 +45,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        usersDb = FirebaseDatabase.getInstance().getReference().child("Users");
+
         mAuth = FirebaseAuth.getInstance();
+        currentUId = mAuth.getCurrentUser().getUid();
 
         checkUserSex();
 
@@ -64,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onLeftCardExit(Object dataObject) {
+                cards obj = (cards) dataObject;
+                String userId = obj.getUserId();
+                usersDb.child(oppositeUserSex).child(userId).child("connections").child("nope").child(currentUId).setValue(true);
                 //Do something on the left!
                 //You also have access to the original object.
                 //If you want to use it just cast it (String) dataObject
@@ -72,6 +81,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onRightCardExit(Object dataObject) {
+                cards obj = (cards) dataObject;
+                String userId = obj.getUserId();
+                usersDb.child(oppositeUserSex).child(userId).child("connections").child("yeps").child(currentUId).setValue(true);
 
                 Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
             }
@@ -158,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
         oppositeSexDb.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String previousChildName) {
-                if (dataSnapshot.exists()){
+                if (dataSnapshot.exists() && !dataSnapshot.child("connections").child("nope").hasChild(currentUId) && !dataSnapshot.child("connections").child("yeps").hasChild(currentUId)){
 
                     cards item = new cards(dataSnapshot.getKey(), dataSnapshot.child("name").getValue().toString());
                     rowItems.add(item);
