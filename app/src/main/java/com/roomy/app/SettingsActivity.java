@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -11,8 +12,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -32,6 +35,7 @@ import java.io.IOException;
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class SettingsActivity extends AppCompatActivity {
     private EditText mNameField, mPhoneField;
@@ -111,10 +115,6 @@ public class SettingsActivity extends AppCompatActivity {
                     if (map.get("phone")!=null) {
                         phone = map.get("name").toString();
                         mPhoneField.setText(phone);
-                    }
-                    if (map.get("profileImageUrl")!=null) {
-                        profileImageUrl = map.get("profileImageUrl").toString();
-                        Glide.with(getApplication()).load(profileImageUrl).into(mProfileImage);
                     }
                 }
             }
