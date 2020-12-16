@@ -1,27 +1,30 @@
 package com.roomy.app;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MatchesViewHolders {
-    public MatchesViewHolders(View layoutView) {
+public class MatchesViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public TextView mMatchId;
+    public TextView mMatchName;
+    public ImageView mMatchImage;
+
+    public MatchesViewHolders(@NonNull View itemView) {
+        super(itemView);
+        itemView.setOnClickListener(this);
+
+        mMatchId = (TextView) itemView.findViewById(R.id.Matchid);
+        mMatchName = (TextView) itemView.findViewById(R.id.MatchName);
+
+        mMatchImage =  (ImageView) itemView.findViewById(R.id.MatchImage);
 
     }
 
-    public class MatchesVIewHolders extends RecyclerView.ViewHolder implements View.OnClickListener{
-       public TextView mMatchId;
-       public MatchesVIewHolders(View itemView) {
-           super(itemView);
-           itemView.setOnClickListener(this);
-           
-           mMatchId = (TextView) itemView.findViewById(R.id.Matchid);
-       }
-        @Override
-        public void onClick(View v) {
-            
-        }
+    @Override
+    public void onClick(View view) {
+
     }
 }

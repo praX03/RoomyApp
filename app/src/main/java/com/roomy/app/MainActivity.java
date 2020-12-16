@@ -5,12 +5,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -221,14 +219,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToSettings(View view) {
-        Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
         intent.putExtra("userSex", userSex);
         startActivity(intent);
         return;
     }
 
     public void goToMatches(View view) {
-        Intent intent = new Intent(MainActivity.this, MainActivity3.class);
+        Intent intent = new Intent(MainActivity.this, MatchesActivity.class);
         startActivity(intent);
         return;
     }
