@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Roomy">
-        <activity android:name=".MatchesActivity"></activity>
+        <activity android:name=".Chat.ChatActivity"></activity>
+        <activity android:name=".MatchesActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegistrationActivity" />
@@ -32,7 +33,7 @@
             tools:ignore="DuplicateActivity" />
         <activity
             android:name=".SettingsActivity"
-            tools:ignore="DuplicateActivity"></activity>
+            tools:ignore="DuplicateActivity" />
     </application>
 
 </manifest>
