@@ -20,6 +20,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class RegistrationActivity extends AppCompatActivity {
@@ -41,45 +43,57 @@ public class RegistrationActivity extends AppCompatActivity {
         firebaseAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                final FirebaseUser user  = FirebaseAuth.getInstance().getCurrentUser();
-                if (user != null){
+                final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if (user !=null){
                     Intent intent = new Intent(RegistrationActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
+                    return;
                 }
             }
         };
 
+
         mRegister = (Button) findViewById(R.id.register);
 
-        mEmail = (EditText) findViewById(R.id.emailId);
+        mEmail = (EditText) findViewById(R.id.email);
         mPassword = (EditText) findViewById(R.id.password);
         mName = (EditText) findViewById(R.id.name);
 
         mRadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
 
-        mRegister.setOnClickListener((View.OnClickListener) v -> {
-            int selectId = mRadioGroup.getCheckedRadioButtonId();
+        mRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int selectId = mRadioGroup.getCheckedRadioButtonId();
 
-            final RadioButton radioButton = (RadioButton) findViewById(selectId);
-            if (radioButton.getText() == null){
-                return;
+                final RadioButton radioButton = (RadioButton) findViewById(selectId);
+
+                if(radioButton.getText() == null){
+                    return;
+                }
+
+                final String email = mEmail.getText().toString();
+                final String password = mPassword.getText().toString();
+                final String name = mName.getText().toString();
+                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(!task.isSuccessful()){
+                            Toast.makeText(RegistrationActivity.this, "sign up error", Toast.LENGTH_SHORT).show();
+                        }else{
+                            String userId = mAuth.getCurrentUser().getUid();
+                            DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
+                            Map userInfo = new HashMap<>();
+                            userInfo.put("name", name);
+                            userInfo.put("sex", radioButton.getText().toString());
+                            userInfo.put("profileImageUrl", "default");
+                            currentUserDb.updateChildren(userInfo);
+                        }
+                    }
+                });
             }
-            final String email = mEmail.getText().toString();
-            final String password = mPassword.getText().toString();
-            final String name = mName.getText().toString();
-            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegistrationActivity.this, task -> {
-                if(!task.isSuccessful()){
-                    Toast.makeText(RegistrationActivity.this, "Try again!", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    String userId = mAuth.getCurrentUser().getUid();
-                    DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(radioButton.getText().toString()).child(userId).child("name");
-                    currentUserDb.setValue(name);
-                }
-            });
         });
-
     }
 
     @Override
