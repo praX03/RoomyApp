@@ -1,4 +1,4 @@
-package com.roomy.app;
+package com.roomy.app.Cards;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.roomy.app.R;
 
 import java.util.List;
 

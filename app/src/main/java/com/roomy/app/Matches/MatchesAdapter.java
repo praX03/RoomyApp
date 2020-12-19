@@ -1,4 +1,4 @@
-package com.roomy.app;
+package com.roomy.app.Matches;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.roomy.app.R;
 
 import java.util.List;
 public class MatchesAdapter extends RecyclerView.Adapter<MatchesViewHolders>{
@@ -29,12 +31,14 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesViewHolders>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MatchesViewHolders holder, int position) {
+    public void onBindViewHolder(MatchesViewHolders holder, int position) {
+        holder.mMatchId.setText(matchesList.get(position).getUserId());
+        holder.mMatchName.setText(matchesList.get(position).getName());
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return this.matchesList.size();
     }
 }

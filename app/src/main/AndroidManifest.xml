@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Roomy">
         <activity android:name=".Chat.ChatActivity"></activity>
-        <activity android:name=".MatchesActivity" />
+        <activity android:name=".Matches.MatchesActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegistrationActivity" />
