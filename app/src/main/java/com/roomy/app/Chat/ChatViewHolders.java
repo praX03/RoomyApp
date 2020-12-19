@@ -25,6 +25,5 @@ public class ChatViewHolders extends RecyclerView.ViewHolder implements View.OnC
 
     @Override
     public void onClick(View view) {
-
     }
 }

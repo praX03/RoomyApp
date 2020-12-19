@@ -16,9 +16,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.roomy.app.Matches.MatchesActivity;
-import com.roomy.app.Matches.MatchesAdapter;
-import com.roomy.app.Matches.MatchesObject;
 import com.roomy.app.R;
 
 import java.util.ArrayList;
@@ -26,10 +23,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static androidx.recyclerview.widget.RecyclerView.*;
+
 public class ChatActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mChatAdapter;
-    private RecyclerView.LayoutManager mChatLayoutManager;
+    private Adapter mChatAdapter;
+    private LayoutManager mChatLayoutManager;
 
     private EditText mSendEditText;
 
