@@ -20,7 +20,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ready to make new friends?"
+        android:text="Ready to make new roomys?"
         android:id="@+id/login" />
 
 </LinearLayout>
