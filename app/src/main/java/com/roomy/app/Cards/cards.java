@@ -1,4 +1,4 @@
-package com.roomy.app;
+package com.roomy.app.Cards;
 
 public class cards {
     private String userId;
