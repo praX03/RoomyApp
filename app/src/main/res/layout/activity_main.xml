@@ -11,40 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-<<<<<<< HEAD
-    <Button
-=======
-
-      <Button
->>>>>>> master
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SignOut"
-        android:onClick="logOutUser"
-        tools:ignore="MissingConstraints"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SignOut"
+            android:onClick="logOutUser"
+            tools:ignore="MissingConstraints" />
 
         <Button
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Roomy-ed"
+            android:text="Matches"
+            android:onClick="goToMatches"
             tools:ignore="MissingConstraints" />
-        <Button
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Settings"
-            tools:ignore="MissingConstraints" />
-
-    </LinearLayout>
-
-    <Button
-        android:layout_weight="1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Matches"
-        android:onClick="goToMatches"
-        tools:ignore="MissingConstraints" />
 
         <Button
             android:layout_weight="1"
@@ -58,9 +38,9 @@
 
     <com.lorentzos.flingswipe.SwipeFlingAdapterView
         android:id="@+id/frame"
+        android:background="#ffeee9e2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffeee9e2"
         app:rotation_degrees="15.5"
         tools:context=".MyActivity" />
 
